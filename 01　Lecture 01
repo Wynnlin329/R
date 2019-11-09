@@ -1,7 +1,5 @@
 Lecture 01　R 語言 101
-
 --------------------------------------------------------------------------------
-
 1.1　常用功能指令
 
 > help(sum)　#等同 help("sum")
@@ -12,22 +10,21 @@ Lecture 01　R 語言 101
 > ?base　#+套件: 提供套件之概略質性描述
 > help(package="base")　#查看詳細套件文檔
 
-> ls( )　#查看現有環境變數
+> ls()　#查看現有環境變數
 > rm(iris)　#等同 rm("iris")，刪除指定變數(形同 R-studio 之清除功能)
-> q( )
+> q()
 
-
-
+--------------------------------------------------------------------------------
 1.2　檔案讀、寫
 
 > data()　#查看內建資料集(但未使用)
 > data(iris)　#等同 data("iris"): 使用內建資料集
 
-
 > getwd()　#查看當前目錄
 > setwd("C:/Users/USER/Desktop/資料科學特區")　#習慣上會將檔案載放同資料夾下，利於開啟
 > setwd("C:\\Users\\USER\\Desktop\\資料科學特區")　#\表跳脫字符
 
+--------------------------------------------------------------------------------
 > data1=read.table("data1.txt", header=T)　#可開啟各種格式之檔案
 > data2=read.csv("data2.csv", header=F, sep="|")　#預設資料無表頭
 > data3=load("data3.RData")
@@ -37,7 +34,6 @@ Lecture 01　R 語言 101
 > file3=save(x=sample.data, file="file3.RData")
 
 --------------------------------------------------------------------------------
-
 > install.packages(readxl)　#讀 excel(.xlsx) 檔
 > library(readxl)
 > data4=read_excel("data4.xlsx")
