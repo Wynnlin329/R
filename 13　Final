@@ -239,8 +239,7 @@ $萬華區
     No Information Rate : 0.8444          
     P-Value [Acc > NIR] : < 2.2e-16       
                                           
-                  Kappa : 0.8504          
-                                          
+                  Kappa : 0.8504                                                    
  Mcnemar's Test P-Value : < 2.2e-16       
                                           
             Sensitivity : 0.9508　#recall 95.08%: TP/TP+FN  
@@ -267,5 +266,4 @@ $萬華區
 
 > perform2=performance(predict3, measure="auc", x.measure="cutoff")　#perform1: ROC曲線、perform2: AUC指標，均由predict3之比對結果取得
 > print(perform2@y.values)
-[[1]]
-[1] 0.9707122
+[[1]][1] 0.9707122
