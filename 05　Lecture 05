@@ -8,6 +8,7 @@ Lecture 05　Data Frame 與清單(lists)
 > customer2=c(TRUE, TRUE, FALSE)
 > data=data.frame(product, price, customer1, customer2)
 
+--------------------------------------------------------------------------------
 > data(iris)
 > class(iris)　#雜湊型資料，顯示data frame
 > str(iris)
