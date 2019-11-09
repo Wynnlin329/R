@@ -1,6 +1,6 @@
 Lecture 07　資料預處理
 --------------------------------------------------------------------------------
-7.1　型態與資料整理
+7.1　型態整理
 
 > seted(--工作路徑--)
 > load(appledaily.RData)
@@ -16,7 +16,6 @@ Lecture 07　資料預處理
 ...
 > unclass("時間")　#以總秒數儲存
 [1] 1460535240 1460535180 ...
-
 > as.POSIXlt("時間") 
 > unclass("時間")　#各時間單位儲存
 $sec: 0, 0, 0 ...
@@ -28,9 +27,12 @@ $year: 116, 116, 116 ...
 ...
 
 --------------------------------------------------------------------------------
+7.2　資料格式整理
+
 > appledaily$clicked=sub("人氣\\(", "" , appledaily$clicked)　#\\表跳脫字元，可整筆取代覆寫
 > appledaily$clicked=sub("\\)", "", appledaily$clicked)
 > appledaily$clicked=as.integer(appledaily$clicked)
+
 > appledaily$clicked=as.integer(sub("人氣\\(", "", sub("\\)", "", appledaily$clicked)))　#單行巢狀式寫法
 > appledaily$clicked
 [1]   1754      0      0      0    311     24     20   ...
@@ -45,7 +47,7 @@ $year: 116, 116, 116 ...
 ...   
 
 --------------------------------------------------------------------------------
-7.2　遺失值處理
+7.3　遺失值處理
 
 > draw=sample(1:nrow(appledaily), 20)　#隨機給出 20 index
 > appledaily[draw, "clicked"]=NA
@@ -65,8 +67,8 @@ $year: 116, 116, 116 ...
 > cat_average=tapply(appledaily$clicked, appledaily#category, function(e){mean(e, na.rm=T)})　#自定義函式具有較佳彈性
 > cat_average
        3C           正妹          生活	　　　...　　#欄名: names(cat_average[i])
- 3954.270      84118.625      11703.03	　　　...　　#數值: cat_average[i]
+ 3954.270      84118.625      11703.03	　　 ...　　#數值: cat_average[i]
 
-> for (i in 1:length(cat_average)){
+> for(i in 1:length(cat_average)){
   appledaily[appledaily$category==names(cat_average[i]) & is.na(appledaily$clicked), "clicked"]=cat_average[i]}
 * 類別平均填入: 符合 is.na 條件者，依欄名填入數值
