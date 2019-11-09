@@ -4,7 +4,6 @@ Lecture 09　敘述統計(2): 圖表視覺化
 > png(--工作路徑/檔名.png--)
 > jpeg(--工作路徑/檔名.jpeg--)　#儲存檔案後才開始繪圖
 > dev.off()　#所有變化存入檔
-
 --------------------------------------------------------------------------------
 9.1　類別型圖表: 只接受(整理後)次數統計
 
@@ -25,7 +24,6 @@ Lecture 09　敘述統計(2): 圖表視覺化
 > H=table(cut(cdc$age, seq(16, 100, by=12), right=T))
 > pie(H, labels=paste(names(H), "x", H), col=rainbow(6))
 > pie(H, labels=paste(names(H), "x", round(H/length(cdc$age)*100, 1), "%"), col=rainbow(6))
-
 * 圓餅圖不適合呈現聯合機率資料
 
 --------------------------------------------------------------------------------
@@ -34,7 +32,6 @@ Lecture 09　敘述統計(2): 圖表視覺化
 > rownames(M)=c("男性", "女性")　#注意: rownames 影響橫軸(xlab)
 > colnames(M)=c("無運動", "有運動")　#注意: colnames 影響縱軸(ylab)
 > mosaicplot(M, col=rainbow(2))
-
 * 鑲嵌圖不適合呈現聯合機率資料(已離散化處理之連續資料無法跨變數分析)
 
 --------------------------------------------------------------------------------
@@ -68,7 +65,11 @@ Lecture 09　敘述統計(2): 圖表視覺化
 > plot(cdc[,c("height", "weight", "wtdesire")])　#輸出 3x3 之兩相散佈圖
 
 --------------------------------------------------------------------------------
-9.3　進階套件: ggplot
+> g=ggplot(cdc, aes(x=height))　#定義畫布
+> g=g+geom_histogram()+xlab("身高分布")　#如同畫布疊層上色
+> ggsave(filename=--檔名.png--, plot=g)
+--------------------------------------------------------------------------------
+9.3　ggplot 套件: 類別資料
 
 > install.packages("ggplot2")
 > library("ggplot2")
@@ -87,10 +88,11 @@ Lecture 09　敘述統計(2): 圖表視覺化
 
 > ggplot(cdc, aes(x=genhlth))+geom_bar()+coord_flip()　#水平軸向
 > ggplot(cdc, aes(x=genhlth))+geom_bar()+coord_polar()　#極座標花瓣圖
-
 * 注意: ggplot 無法直接畫圓餅圖
 
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+9.4　ggplot 套件: 連續資料
+
 > ggplot(cdc, aes(x=height))+geom_histogram()
 > ggplot(cdc, aes(x=height))+geom_histogram(fill="pink", color="black", bins=40)+xlab("身高分布")+ylab("人數")　#bins: 預設 30，值越大則越精分
 
@@ -105,7 +107,3 @@ Lecture 09　敘述統計(2): 圖表視覺化
 
 > ggplot(cdc, aes(x=height))+geom_histogram()+coord_flip()
 > ggplot(cdc, aes(x=height))+geom_histogram()+coord_polar()　#將(分組條)極座標化投影
-
-> g=ggplot(cdc, aes(x=height))　#定義畫布
-> g=g+geom_histogram()+xlab("身高分布")　#如同畫布疊層上色
-> ggsave(filename=--檔名.png--, plot=g)
