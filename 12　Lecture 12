@@ -54,7 +54,6 @@ Lecture 12　機器學習(2): 分群問題
 
 * 需事先決定群數 k: 隨機選取 k 筆資料作為初始群心
 * 固定群心，劃分剩餘資料之群屬; 固定剩餘資料，重新計算群心(循環至群心不動)
-
 > K=kmeans(customer, 4)
 > K
 K-means clustering with 4 clusters of sizes 8, 16, 25, 11　#K$size
@@ -93,7 +92,8 @@ Available components:
 > KS=silhouette(K$cluster, dist(customer))　#分別代表分群及樣本點
  Cluster sizes and average silhouette widths:
         8        16        25        11 
-0.5464597 0.3794910 0.5164434 0.4080823 
+0.5464597 0.3794910 0.5164434 0.4080823
+
  Individual silhouette widths:
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
  0.1931  0.4030  0.4890  0.4641  0.5422  0.6333
