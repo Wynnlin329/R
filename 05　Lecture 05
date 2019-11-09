@@ -1,6 +1,6 @@
-Lecture 05　Data Frame 與清單(lists)
+Lecture 05　表格(data frame)與清單(lists)
 --------------------------------------------------------------------------------
-5.1　Data Frame之產生
+5.1　表格之產生
 
 > product=c("egg", "milk", "beef")
 > price=c(40, 110, 100)
